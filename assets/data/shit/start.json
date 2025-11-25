@@ -1,6 +1,6 @@
 {
     "commands": [
-        "echo \"HELLO WORLD\"",
+        "echo \"HELLO \"WORLD\"\"",
         "go back 1"
     ]
 }

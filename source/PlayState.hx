@@ -78,7 +78,14 @@ class PlayState extends FlxState
 					if (i > 1)
 						echo += " " + split_command[i];
 
-				Sys.println(echo);
+				if (!(echo.startsWith('"') && echo.endsWith('"')))
+				{
+					Sys.println("[WARNING] Quotes (\"'s) should surround the echo input");
+				}
+				else
+				{
+					Sys.println(echo.substring(1, echo.length - 1));
+				}
 
 			case "go":
 				var direction:String = split_command[1];
