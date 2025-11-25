@@ -4,6 +4,11 @@ using StringTools;
 
 class EchoCommand extends Command
 {
+	override function get_group():String
+	{
+		return 'echo';
+	}
+
 	override function parseCommandValue(split_command:Array<String>)
 	{
 		var echo:String = split_command[0];
@@ -18,7 +23,7 @@ class EchoCommand extends Command
 		}
 		else
 		{
-            this.value = echo.substring(1, echo.length - 1);
+			this.value = echo.substring(1, echo.length - 1);
 			Sys.println(this.value);
 		}
 	}
