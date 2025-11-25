@@ -74,8 +74,22 @@ class PlayState extends FlxState
 
 				Sys.println(echo);
 
+			case "go":
+				var direction:String = split_command[1];
+
+				switch (direction)
+				{
+					case "back":
+						line_number_add_amount = -(Std.parseInt(split_command[2]));
+					case "forward":
+						line_number_add_amount = Std.parseInt(split_command[2]);
+
+					default:
+						Sys.println("[WARNING] Unknown input for command: \"go\" : " + split_command[2]);
+				}
+
 			default:
-				Sys.println("Unimplemented command: " + split_command[0]);
+				Sys.println("[WARNING] Unimplemented command: " + split_command[0]);
 		}
 
 		line_number += line_number_add_amount;
