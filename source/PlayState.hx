@@ -91,6 +91,9 @@ class PlayState extends FlxState
 				var command:AtCommand = new AtCommand(command);
 				command.parse();
 
+			case '':
+				continue;
+
 			default:
 				Sys.println("[WARNING] Unimplemented command: " + split_command[0]);
 		}
