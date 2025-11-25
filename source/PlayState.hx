@@ -1,5 +1,7 @@
 package;
 
+import commands.GoCommand;
+import commands.EchoCommand;
 import haxe.Log;
 import haxe.Json;
 import lime.app.Application;
@@ -11,11 +13,17 @@ using StringTools;
 
 class PlayState extends FlxState
 {
-	var starting_point:String = '';
+	public var starting_point:String = '';
+
+	public static var instance:PlayState;
 
 	override public function new()
 	{
 		super();
+
+		if (instance != null)
+			instance = null;
+		instance = this;
 
 		starting_point = File.getContent('assets/data/starting_point.txt');
 
@@ -34,8 +42,8 @@ class PlayState extends FlxState
 		// trace('Valid starting point!');
 	}
 
-	var commands:Array<String> = [];
-	var line_number:Int = 0;
+	public var commands:Array<String> = [];
+	public var line_number:Int = 0;
 
 	override function create()
 	{
@@ -72,34 +80,12 @@ class PlayState extends FlxState
 		switch (split_command[0])
 		{
 			case "echo":
-				var echo:String = split_command[1];
-
-				for (i in 0...split_command.length)
-					if (i > 1)
-						echo += " " + split_command[i];
-
-				if (!(echo.startsWith('"') && echo.endsWith('"')))
-				{
-					Sys.println("[WARNING] Quotes (\"'s) should surround the echo input");
-				}
-				else
-				{
-					Sys.println(echo.substring(1, echo.length - 1));
-				}
+				new EchoCommand(command).parse();
 
 			case "go":
-				var direction:String = split_command[1];
-
-				switch (direction)
-				{
-					case "back":
-						line_number_add_amount = -(Std.parseInt(split_command[2]));
-					case "forward":
-						line_number_add_amount = Std.parseInt(split_command[2]);
-
-					default:
-						Sys.println("[WARNING] Unknown input for command: \"go\" : " + split_command[2]);
-				}
+				var command:GoCommand = new GoCommand(command);
+				command.parse();
+				line_number_add_amount = Std.parseInt(command.value);
 
 			default:
 				Sys.println("[WARNING] Unimplemented command: " + split_command[0]);
