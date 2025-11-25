@@ -1,5 +1,6 @@
 package;
 
+import haxe.Log;
 import haxe.Json;
 import lime.app.Application;
 import sys.FileSystem;
@@ -30,10 +31,11 @@ class PlayState extends FlxState
 			Sys.exit(0);
 		}
 
-		trace('Valid starting point!');
+		// trace('Valid starting point!');
 	}
 
 	var commands:Array<String> = [];
+	var line_number:Int = 0;
 
 	override function create()
 	{
@@ -42,10 +44,46 @@ class PlayState extends FlxState
 		var json_file = Json.parse(File.getContent(starting_point));
 
 		commands = cast json_file.commands;
+
+		line_number++;
 	}
 
-	override public function update(elapsed:Float)
+	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
+
+		if (line_number < 1)
+			return;
+
+		readCommand(commands[line_number - 1]);
+	}
+
+	public function readCommand(command:String)
+	{
+		var line_number_add_amount = 1;
+		var split_command:Array<String> = command.split(" ");
+
+		switch (split_command[0])
+		{
+			case "echo":
+				var echo:String = split_command[1];
+
+				for (i in 0...split_command.length)
+					if (i > 1)
+						echo += " " + split_command[i];
+
+				Sys.println(echo);
+
+			default:
+				Sys.println("Unimplemented command: " + split_command[0]);
+		}
+
+		line_number += line_number_add_amount;
+
+		if ((line_number - 1) == commands.length)
+		{
+			Application.current.window.alert("The program is out of executable program lines. Goodbye.", "Overflow prevention");
+			Sys.exit(0);
+		}
 	}
 }
