@@ -1,6 +1,17 @@
 {
     "commands": [
         "echo \"HELLO \"WORLD\"\"",
-        "go back 1"
+        "go to 10",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "go forward 5",
+        "",
+        "go back 2",
+        "",
+        "",
+        "echo \"Just a bit extra...\""
     ]
 }
