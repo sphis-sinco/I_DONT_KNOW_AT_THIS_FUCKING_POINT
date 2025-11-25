@@ -19,7 +19,7 @@ class GoCommand extends Command
 
 			default:
                 this.value = "1";
-				Sys.println("[WARNING] Unknown input for command: \"go\" : " + split_command[1]);
+				Sys.println("[WARNING] Unknown input for command: \""+this.name+"\" : " + split_command[0]);
 		}
 	}
 }
