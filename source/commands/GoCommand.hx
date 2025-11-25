@@ -15,7 +15,7 @@ class GoCommand extends Command
 			case "forward":
 				this.value = split_command[1];
             case "to":
-				this.value = "" + (PlayState.instance.line_number - Std.parseInt(split_command[1]));
+				this.value = "" + (Std.parseInt(split_command[1]) - PlayState.instance.line_number);
 
 			default:
                 this.value = "1";
