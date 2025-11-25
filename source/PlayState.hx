@@ -13,7 +13,7 @@ using StringTools;
 
 class PlayState extends FlxState
 {
-	public var starting_point:String = '';
+	var starting_point:String = '';
 
 	public static var instance:PlayState;
 
@@ -42,6 +42,7 @@ class PlayState extends FlxState
 		// trace('Valid starting point!');
 	}
 
+	public var filepath:String = '';
 	public var commands:Array<String> = [];
 	public var line_number:Int = 0;
 
@@ -49,6 +50,7 @@ class PlayState extends FlxState
 	{
 		super.create();
 
+		filepath = starting_point;
 		var json_file = Json.parse(File.getContent(starting_point));
 
 		commands = cast json_file.commands;
