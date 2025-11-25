@@ -24,7 +24,7 @@ class EchoCommand extends Command
 		else
 		{
 			this.value = echo.substring(1, echo.length - 1);
-			Sys.println(this.value);
+			Sys.println(PlayState.instance.line_number + ' : ' + this.value);
 		}
 	}
 }
