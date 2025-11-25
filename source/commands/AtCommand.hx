@@ -14,8 +14,8 @@ class AtCommand extends Command
 		switch (func)
 		{
 			case 'import':
-				var import_cmd_or_group = split_command[1];
-				var import_func = split_command[2];
+				var import_func = split_command[1];
+				var import_cmd_or_group = split_command[2];
 
 				switch (import_func)
 				{
@@ -24,7 +24,7 @@ class AtCommand extends Command
 					case 'remove':
 						Command.imported.remove(import_cmd_or_group);
 					default:
-						Sys.println("[WARNING] Unknown input for command: \"" + this.name + " import\" : " + func);
+						Sys.println("[WARNING] Unknown input for command: \"" + this.name + " import\" : " + import_func);
 				}
 
 			default:
