@@ -1,5 +1,6 @@
 package;
 
+import commands.AtCommand;
 import commands.GoCommand;
 import commands.EchoCommand;
 import haxe.Json;
@@ -85,6 +86,10 @@ class PlayState extends FlxState
 				var command:GoCommand = new GoCommand(command);
 				command.parse();
 				line_number_add_amount = Std.parseInt(command.value);
+
+			case "@":
+				var command:AtCommand = new AtCommand(command);
+				command.parse();
 
 			default:
 				Sys.println("[WARNING] Unimplemented command: " + split_command[0]);
