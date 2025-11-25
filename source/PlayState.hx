@@ -63,6 +63,12 @@ class PlayState extends FlxState
 		var line_number_add_amount = 1;
 		var split_command:Array<String> = command.split(" ");
 
+		if (command.startsWith(';'))
+		{
+			line_number += 1;
+			return;
+		}
+
 		switch (split_command[0])
 		{
 			case "echo":
