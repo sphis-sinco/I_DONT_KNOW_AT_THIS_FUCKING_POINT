@@ -2,7 +2,6 @@ package;
 
 import commands.GoCommand;
 import commands.EchoCommand;
-import haxe.Log;
 import haxe.Json;
 import lime.app.Application;
 import sys.FileSystem;
