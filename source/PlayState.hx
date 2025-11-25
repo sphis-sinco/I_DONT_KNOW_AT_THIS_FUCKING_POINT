@@ -11,9 +11,9 @@ class PlayState extends FlxState
 {
 	var starting_point:String= '';
 
-	override public function create()
+	override public function new()
 	{
-		super.create();
+		super();
 
 		starting_point = File.getContent('assets/data/starting_point.txt');
 
@@ -28,6 +28,8 @@ class PlayState extends FlxState
 			Application.current.window.alert("The starting point file doesn't link to a json, sry.", "NON-JSON STARTING POINT");
 			Sys.exit(0);
 		}
+
+		trace('Valid starting point!');
 	}
 
 	override public function update(elapsed:Float)
