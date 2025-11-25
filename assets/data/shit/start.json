@@ -1,5 +1,6 @@
 {
     "commands": [
+        "@ import add echo",
         "echo \"HELLO \"WORLD\"\"",
         "go to 10",
         "",
