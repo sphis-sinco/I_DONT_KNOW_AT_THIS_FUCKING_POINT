@@ -1,5 +1,6 @@
 package;
 
+import flixel.text.FlxText;
 import commands.AtCommand;
 import commands.GoCommand;
 import commands.EchoCommand;
@@ -49,6 +50,8 @@ class PlayState extends FlxState
 	override function create()
 	{
 		super.create();
+
+		add(new FlxText(2, 2, 0, Application.current.meta.get('version'), 16));
 
 		filepath = starting_point;
 		var json_file = Json.parse(File.getContent(starting_point));
