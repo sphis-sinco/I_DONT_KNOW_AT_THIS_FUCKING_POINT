@@ -1,5 +1,6 @@
 package;
 
+import haxe.Json;
 import lime.app.Application;
 import sys.FileSystem;
 import sys.io.File;
@@ -19,7 +20,7 @@ class PlayState extends FlxState
 
 		if (!FileSystem.exists(starting_point))
 		{
-			Application.current.window.alert("The starting point file doesn't exist", "STARTING POINT DOESN'T EXIST");
+			Application.current.window.alert("The starting point file \"" + starting_point + "\" doesn't exist", "STARTING POINT DOESN'T EXIST");
 			Sys.exit(0);
 		}
 
@@ -32,9 +33,15 @@ class PlayState extends FlxState
 		trace('Valid starting point!');
 	}
 
+	var commands:Array<String> = [];
+
 	override function create()
 	{
 		super.create();
+
+		var json_file = Json.parse(File.getContent(starting_point));
+
+		commands = cast json_file.commands;
 	}
 
 	override public function update(elapsed:Float)
