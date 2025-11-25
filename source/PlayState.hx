@@ -92,7 +92,6 @@ class PlayState extends FlxState
 				command.parse();
 
 			case '':
-				continue;
 
 			default:
 				Sys.println("[WARNING] Unimplemented command: " + split_command[0]);
