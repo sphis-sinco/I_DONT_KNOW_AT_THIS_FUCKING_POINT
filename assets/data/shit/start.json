@@ -13,6 +13,8 @@
         "go back 2",
         "",
         "",
-        "echo \"Just a bit extra...\""
+        "echo \"Just a bit extra...\"",
+        "@ variable set bob 10",
+        "echo @ variable get bob"
     ]
 }

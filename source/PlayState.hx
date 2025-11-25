@@ -45,12 +45,34 @@ class PlayState extends FlxState
 
 	public var filepath:String = '';
 	public var commands:Array<String> = [];
+
+	public var variables:Map<String, Dynamic> = [];
+	public var settable_variables:Array<String> = [];
+
 	public var line_number:Int = 0;
+
+	public function setVariable(name:String, value:Dynamic, ?settable:Bool = true)
+	{
+		if (variables.exists(name) && !settable_variables.contains(name))
+		{
+			Sys.println("[WARNING] Cannot set variable set to non_settable: " + name);
+			return;
+		}
+
+		variables.set(name, value);
+
+		if (settable)
+			settable_variables.push(name);
+		else if (!settable && settable_variables.contains(name))
+			settable_variables.remove(name);
+	}
 
 	override function create()
 	{
 		super.create();
 
+		variables.clear();
+		variables.set('version', Application.current.meta.get('version'));
 		add(new FlxText(2, 2, 0, Application.current.meta.get('version'), 16));
 
 		filepath = starting_point;
