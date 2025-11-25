@@ -9,7 +9,7 @@ using StringTools;
 
 class PlayState extends FlxState
 {
-	var starting_point:String= '';
+	var starting_point:String = '';
 
 	override public function new()
 	{
@@ -30,6 +30,11 @@ class PlayState extends FlxState
 		}
 
 		trace('Valid starting point!');
+	}
+
+	override function create()
+	{
+		super.create();
 	}
 
 	override public function update(elapsed:Float)
