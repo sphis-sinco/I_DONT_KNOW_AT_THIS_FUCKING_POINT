@@ -11,5 +11,8 @@ class Cmd
 		this.override_index_increase = override_index_increase;
 	}
 
-	public function run(args:Array<String>) {}
+	public function run(args:Array<String>):Dynamic
+	{
+		return null;
+	}
 }
