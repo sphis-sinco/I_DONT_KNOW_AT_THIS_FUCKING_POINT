@@ -3,7 +3,7 @@ package apotu;
 class CommandFileReader 
 {
 
-    public static function readFile(file:String):Array<String>
+    public static function decodeCommandFile(file:String):Array<String>
     {
         var file_content:String;
 
