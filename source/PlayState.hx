@@ -5,7 +5,7 @@ class PlayState extends FlxState
 {
     public var command_list:Array<String> = [];
 
-    public var starting_file:String = 'assets/data/starting_file.txt';
+    public var starting_file:String = 'assets/data/main.txt';
 
 	override function create()
 	{
