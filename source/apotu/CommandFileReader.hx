@@ -15,5 +15,10 @@ class CommandFileReader
 
         return file_content.split('\n');
     }
+
+    public static function decodeCommand(command:String):Array<String>
+    {
+        return command.split(" : ");
+    }
     
 }
